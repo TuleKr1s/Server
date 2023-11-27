@@ -1,12 +1,14 @@
-QT       += core gui network
+#QT       += core gui network
+QT =
+CONFIG =
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+#greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++17
+#CONFIG += c++17
 
-INCLUDEPATH += F:\Programming\vcpkg\vcpkg\installed\x64-windows\include
+TARGET = opencvtest
+TEMPLATE = app
 
-LIBS += -LF:\Programming\vcpkg\vcpkg\installed\x64-windows\bin -lportaudio
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -21,7 +23,16 @@ HEADERS += \
     client.h \
     server.h
 
-FORMS +=
+INCLUDEPATH += F:\Programming\OpenCV\opencv\build\include
+
+LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_core480.dll
+LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_highgui480.dll
+LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_videoio480.dll
+LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_imgcodecs480.dll
+LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_features2d480.dll
+LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_calib3d480.dll
+
+LIBS += -lgdi32
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
