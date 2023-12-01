@@ -1,13 +1,13 @@
-#QT       += core gui network
-QT =
-CONFIG =
+QT       += core gui network
+#QT =
+#CONFIG =
 
-#greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-#CONFIG += c++17
+CONFIG += c++17
 
-TARGET = opencvtest
-TEMPLATE = app
+#TARGET = opencvtest
+#TEMPLATE = app
 
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -17,22 +17,22 @@ TEMPLATE = app
 SOURCES += \
     client.cpp \
     main.cpp \
+    screenshot.cpp \
     server.cpp
 
 HEADERS += \
     client.h \
+    screenshot.h \
     server.h
 
-INCLUDEPATH += F:\Programming\OpenCV\opencv\build\include
+#INCLUDEPATH += F:\Programming\OpenCV\opencv\build\include
 
-LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_core480.dll
-LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_highgui480.dll
-LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_videoio480.dll
-LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_imgcodecs480.dll
-LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_features2d480.dll
-LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_calib3d480.dll
-
-LIBS += -lgdi32
+#LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_core480.dll
+#LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_highgui480.dll
+#LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_videoio480.dll
+#LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_imgcodecs480.dll
+#LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_features2d480.dll
+#LIBS += F:\Programming\OpenCV\opencv\opencv-build\bin\libopencv_calib3d480.dll
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
