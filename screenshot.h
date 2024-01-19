@@ -7,6 +7,8 @@
 #include <QCursor>
 #include <QPainter>
 #include <QIcon>
+#include <QPixmap>
+#include <QElapsedTimer>
 
 class Screenshot : public QWidget {
     Q_OBJECT
@@ -14,6 +16,7 @@ class Screenshot : public QWidget {
 private:
     QLabel* screenshotLabel;
     QTimer* timer;
+    QElapsedTimer elapsedTimer;
 
 public:
     Screenshot(QWidget *parent = nullptr);
@@ -22,6 +25,9 @@ public:
 
 public slots:
     void captureScreenshot();
+    void handleTimer();
 
+signals:
+    void ScreenTaken(QPixmap);
 
 };
