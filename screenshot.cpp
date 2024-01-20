@@ -32,14 +32,26 @@ void Screenshot::handleTimer() {
 
 void Screenshot::captureScreenshot() {
     // Получаем скриншот текущего экрана
-    QScreen* screen = QGuiApplication::primaryScreen();
-    QPixmap screenshot = screen->grabWindow(0); // Сделать учет нескольких мониторов
+    QScreen* mainScreen = QGuiApplication::primaryScreen();
+
+    QPoint cursorPos = QCursor::pos();
+    QScreen* currentScreen = mainScreen;
+    QList<QScreen*> screens = QGuiApplication::screens();
+    for (QScreen* screen : screens) {
+        if (screen->geometry().contains(cursorPos)) {
+            currentScreen = screen;
+            break;
+        }
+    }
+
+    QPoint offset = currentScreen->geometry().topLeft() - mainScreen->geometry().topLeft();
+
+    QPixmap screenshot = currentScreen->grabWindow();
 
     QPixmap cursorIcon("../AudioServer1/Icons/ArrowCursor.png");
-
     // Рисуем курсор
     QPainter painter(&screenshot);
-    painter.drawPixmap(QCursor::pos().x(), QCursor::pos().y(), \
+    painter.drawPixmap(cursorPos - offset, \
                        cursorIcon.scaled(25,25,Qt::KeepAspectRatio));
 
     emit ScreenTaken(screenshot);
